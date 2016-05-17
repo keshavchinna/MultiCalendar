@@ -1,0 +1,837 @@
+/*
+ * FullCalendar v1.4.6 Stylesheet
+ *
+ * Feel free to edit this file to customize the look of FullCalendar.
+ * When upgrading to newer versions, please upgrade this file as well,
+ * porting over any customizations afterwards.
+ *
+ * Date: Mon May 31 10:18:29 2010 -0700
+ *
+ */
+
+
+.fc,
+.fc .fc-header,
+.fc .fc-content {
+	font-size: 1em;
+	}
+	
+.fc {
+	direction: ltr;
+	text-align: left;
+	}
+	
+.fc table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	}
+	
+.fc td, .fc th {
+	padding: 0;
+	vertical-align: top;
+	}
+
+
+
+/* Header
+------------------------------------------------------------------------*/
+	
+table.fc-header {
+	width: 100%;
+	}
+	
+.fc-header-left {
+	width: 25%;
+	}
+	
+.fc-header-left table {
+	float: left;
+	}
+	
+.fc-header-center {
+	width: 50%;
+	text-align: center;
+	}
+	
+.fc-header-center table {
+	margin: 0 auto;
+	}
+	
+.fc-header-right {
+	width: 25%;
+	}
+	
+.fc-header-right table {
+	float: right;
+	}
+	
+.fc-header-title {
+	margin-top: 0;
+	white-space: nowrap;
+	}
+	
+.fc-header-space {
+	padding-left: 10px;
+	}
+	
+/* right-to-left */
+
+.fc-rtl .fc-header-title {
+	direction: rtl;
+	}
+
+
+
+/* Buttons
+------------------------------------------------------------------------*/
+
+.fc-header .fc-state-default,
+.fc-header .ui-state-default {
+	margin-bottom: 1em;
+	cursor: pointer;
+	}
+	
+.fc-header .fc-state-default {
+	border-width: 1px 0;
+	padding: 0 1px;
+	}
+	
+.fc-header .fc-state-default,
+.fc-header .fc-state-default a {
+	border-style: solid;
+	}
+	
+.fc-header .fc-state-default a {
+	display: block;
+	border-width: 0 1px;
+	margin: 0 -1px;
+	width: 100%;
+	text-decoration: none;
+	}
+	
+.fc-header .fc-state-default span {
+	display: block;
+	border-style: solid;
+	border-width: 1px 0 1px 1px;
+	padding: 3px 5px;
+	}
+	
+.fc-header .ui-state-default {
+	padding: 4px 6px;
+	}
+	
+.fc-header .fc-state-default span,
+.fc-header .ui-state-default span {
+	white-space: nowrap;
+	}
+	
+/* for adjacent buttons */
+	
+.fc-header .fc-no-right {
+	padding-right: 0;
+	}
+	
+.fc-header .fc-no-right a {
+	margin-right: 0;
+	border-right: 0;
+	}
+	
+.fc-header .ui-no-right {
+	border-right: 0;
+	}
+	
+/* for fake rounded corners */
+	
+.fc-header .fc-corner-left {
+	margin-left: 1px;
+	padding-left: 0;
+	}
+	
+.fc-header .fc-corner-right {
+	margin-right: 1px;
+	padding-right: 0;
+	}
+	
+/* DEFAULT button COLORS */
+	
+.fc-header .fc-state-default,
+.fc-header .fc-state-default a {
+	border-color: #777; /* outer border */
+	color: #333;
+	}
+
+.fc-header .fc-state-default span {
+	border-color: #fff #fff #d1d1d1; /* inner border */
+	background: #e8e8e8;
+	}
+	
+/* PRESSED button COLORS (down and active) */
+	
+.fc-header .fc-state-active a {
+	color: #fff;
+	}
+	
+.fc-header .fc-state-down span,
+.fc-header .fc-state-active span {
+	background: #888;
+	border-color: #808080 #808080 #909090; /* inner border */
+	}
+	
+/* DISABLED button COLORS */
+	
+.fc-header .fc-state-disabled a {
+	color: #999;
+	}
+	
+.fc-header .fc-state-disabled,
+.fc-header .fc-state-disabled a {
+	border-color: #ccc; /* outer border */
+	}
+	
+.fc-header .fc-state-disabled span {
+	border-color: #fff #fff #f0f0f0; /* inner border */
+	background: #f0f0f0;
+	}
+	
+	
+	
+/* Content Area & Global Cell Styles
+------------------------------------------------------------------------*/
+	
+.fc-widget-content {
+	border: 1px solid #ccc; /* outer border color */
+	}
+	
+.fc-content {
+	clear: both;
+	}
+	
+.fc-content .fc-state-default {
+	border-style: solid;
+	border-color: #ccc; /* inner border color */
+	}
+	
+.fc-content .fc-state-highlight { /* today */
+	background: #ffc;
+	}
+	
+.fc-content .fc-not-today {
+	background: none;
+	}
+	
+.fc-cell-overlay { /* semi-transparent rectangle while dragging */
+	background: #9cf;
+	opacity: .2;
+	filter: alpha(opacity=20); /* for IE */
+	}
+	
+.fc-view { /* prevents dragging outside of widget */
+	width: 100%;
+	overflow: hidden;
+	}
+	
+	
+	
+/* Global Event Styles
+------------------------------------------------------------------------*/
+
+.fc-event,
+.fc-agenda .fc-event-time,
+.fc-event a {
+	border-style: solid; 
+	border-color: #36c;     /* default BORDER color (probably the same as background-color) */
+	background-color: #36c; /* default BACKGROUND color */
+	color: #fff;            /* default TEXT color */
+	}
+
+.fc-event A:LINK {
+	color: #fff;            /* default TEXT color */
+}
+	
+.fc-event A:active {
+	color: #fff;            /* default TEXT color */
+}
+
+.fc-event A:visited  {
+	color: #fff;            /* default TEXT color */
+}
+
+.fc-event A:hover   {
+	color: #ddd;            /* default TEXT color */
+}
+	
+	/* Use the 'className' CalEvent property and the following
+	 * example CSS to change event color on a per-event basis:
+	 *
+	 * .myclass,
+	 * .fc-agenda .myclass .fc-event-time,
+	 * .myclass a {
+	 *     background-color: black;
+	 *     border-color: black;
+	 *     color: red;
+	 *     }
+	 */
+	 
+.fc-event {
+	text-align: left;
+	}
+	
+.fc-event a {
+	overflow: hidden;
+	font-size: .85em;
+	text-decoration: none;
+	cursor: pointer;
+	}
+	
+.fc-event-editable {
+	cursor: pointer;
+	}
+	
+.fc-event-time,
+.fc-event-title {
+	padding: 0 1px;
+	}
+	
+/* for fake rounded corners */
+
+.fc-event a {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	}
+	
+/* right-to-left */
+
+.fc-rtl .fc-event a {
+	text-align: right;
+	}
+	
+/* resizable */
+	
+.fc .ui-resizable-handle {
+	display: block;
+	position: absolute;
+	z-index: 99999;
+	border: 0 !important; /* important overrides pre jquery ui 1.7 styles */
+	background: url(data:image/gif;base64,AAAA) !important; /* hover fix for IE */
+	}
+	
+	
+	
+/* Horizontal Events
+------------------------------------------------------------------------*/
+
+.fc-event-hori {
+	border-width: 1px 0;
+	margin-bottom: 1px;
+	}
+	
+.fc-event-hori a {
+	border-width: 0;
+	}
+	
+/* for fake rounded corners */
+	
+.fc-content .fc-corner-left {
+	margin-left: 1px;
+	}
+	
+.fc-content .fc-corner-left a {
+	margin-left: -1px;
+	border-left-width: 1px;
+	}
+	
+.fc-content .fc-corner-right {
+	margin-right: 1px;
+	}
+	
+.fc-content .fc-corner-right a {
+	margin-right: -1px;
+	border-right-width: 1px;
+	}
+	
+/* resizable */
+	
+.fc-event-hori .ui-resizable-e {
+	top: 0           !important; /* importants override pre jquery ui 1.7 styles */
+	right: -3px      !important;
+	width: 7px       !important;
+	height: 100%     !important;
+	cursor: e-resize;
+	}
+	
+.fc-event-hori .ui-resizable-w {
+	top: 0           !important;
+	left: -3px       !important;
+	width: 7px       !important;
+	height: 100%     !important;
+	cursor: w-resize;
+	}
+	
+.fc-event-hori .ui-resizable-handle {
+	_padding-bottom: 14px; /* IE6 had 0 height */
+	}
+	
+	
+
+/* Month View, Basic Week View, Basic Day View
+------------------------------------------------------------------------*/
+
+.fc-grid table {
+	width: 100%;
+	}
+	
+.fc .fc-grid th {
+	border-width: 0 0 0 1px;
+	text-align: center;
+	}
+	
+.fc .fc-grid td {
+	border-width: 1px 0 0 1px;
+	}
+	
+.fc-grid th.fc-leftmost,
+.fc-grid td.fc-leftmost {
+	border-left: 0;
+	}
+	
+.fc-grid .fc-day-number {
+	float: right;
+	padding: 0 2px;
+	}
+	
+.fc-grid .fc-other-month .fc-day-number {
+	opacity: 0.3;
+	filter: alpha(opacity=30); /* for IE */
+	/* opacity with small font can sometimes look too faded
+	   might want to set the 'color' property instead
+	   making day-numbers bold also fixes the problem */
+	}
+	
+.fc-grid .fc-day-content {
+	clear: both;
+	padding: 2px 2px 0; /* distance between events and day edges */
+	}
+	
+/* event styles */
+	
+.fc-grid .fc-event-time {
+	font-weight: bold;
+	}
+	
+/* right-to-left */
+
+.fc-rtl .fc-grid {
+	direction: rtl;
+	}
+	
+.fc-rtl .fc-grid .fc-day-number {
+	float: left;
+	}
+	
+.fc-rtl .fc-grid .fc-event-time {
+	float: right;
+	}
+	
+/* Agenda Week View, Agenda Day View
+------------------------------------------------------------------------*/
+
+.fc .fc-agenda th,
+.fc .fc-agenda td {
+	border-width: 1px 0 0 1px;
+	}
+	
+.fc .fc-agenda .fc-leftmost {
+	border-left: 0;
+	}
+	
+.fc-agenda tr.fc-first th,
+.fc-agenda tr.fc-first td {
+	border-top: 0;
+	}
+	
+.fc-agenda-head tr.fc-last th {
+	border-bottom-width: 1px;
+	}
+	
+.fc .fc-agenda-head td,
+.fc .fc-agenda-body td {
+	background: none;
+	}
+	
+.fc-agenda-head th {
+	text-align: center;
+	}
+	
+/* the time axis running down the left side */
+	
+.fc-agenda .fc-axis {
+	width: 50px;
+	padding: 0 4px;
+	vertical-align: middle;
+	white-space: nowrap;
+	text-align: right;
+	font-weight: normal;
+	}
+	
+/* all-day event cells at top */
+	
+.fc-agenda-head tr.fc-all-day th {
+	height: 35px;
+	}
+	
+.fc-agenda-head td {
+	padding-bottom: 10px;
+	}
+	
+.fc .fc-divider div {
+	font-size: 1px; /* for IE6/7 */
+	height: 2px;
+	}
+	
+.fc .fc-divider .fc-state-default {
+	background: #eee; /* color for divider between all-day and time-slot events */
+	}
+
+/* body styles */
+	
+.fc .fc-agenda-body td div {
+	height: 20px; /* slot height */
+	}
+	
+.fc .fc-agenda-body tr.fc-minor th,
+.fc .fc-agenda-body tr.fc-minor td {
+	border-top-style: dotted;
+	}
+	
+.fc-agenda .fc-day-content {
+	padding: 2px 2px 0; /* distance between events and day edges */
+	}
+	
+
+
+/* Vertical Events
+------------------------------------------------------------------------*/
+
+.fc-event-vert {
+	border-width: 0 1px;
+	}
+	
+.fc-event-vert a {
+	border-width: 0;
+	}
+	
+/* for fake rounded corners */
+	
+.fc-content .fc-corner-top {
+	margin-top: 1px;
+	}
+	
+.fc-content .fc-corner-top a {
+	margin-top: -1px;
+	border-top-width: 1px;
+	}
+	
+.fc-content .fc-corner-bottom {
+	margin-bottom: 1px;
+	}
+	
+.fc-content .fc-corner-bottom a {
+	margin-bottom: -1px;
+	border-bottom-width: 1px;
+	}
+	
+/* event content */
+	
+.fc-event-vert span {
+	display: block;
+	position: relative;
+	z-index: 2;
+	}
+	
+.fc-event-vert span.fc-event-time {
+	white-space: nowrap;
+	_white-space: normal;
+	overflow: hidden;
+	border: 0;
+	font-size: 10px;
+	}
+	
+.fc-event-vert span.fc-event-title {
+	line-height: 13px;
+	}
+	
+.fc-event-vert span.fc-event-bg { /* makes the event lighter w/ a semi-transparent overlay  */
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	opacity: .3;
+	filter: alpha(opacity=30); /* for IE */
+	}
+	
+/* resizable */
+	
+.fc-event-vert .ui-resizable-s {
+	bottom: 0        !important; /* importants override pre jquery ui 1.7 styles */
+	width: 100%      !important;
+	height: 8px      !important;
+	line-height: 8px !important;
+	font-size: 11px  !important;
+	font-family: monospace;
+	text-align: center;
+	cursor: s-resize;
+	}
+	
+.eC1,
+.fc-agenda .eC1 .fc-event-time,
+.eC1 a {
+background-color: rgb(92, 166, 50);
+border-color: rgb(61, 130, 21);
+}
+
+.eC2,
+.fc-agenda .eC2 .fc-event-time,
+.eC2 a {
+ background-color: rgb(171, 38, 113);
+ border-color: rgb(135, 11, 80);
+}
+
+
+.eC3,
+.fc-agenda .eC3 .fc-event-time,
+.eC3 a {
+ background-color: rgb(69, 133, 163);
+ border-color: rgb(37, 97, 125);
+}
+
+
+.eC4,
+.fc-agenda .eC4 .fc-event-time,
+.eC4 a {
+ background-color: rgb(207, 153, 17);
+ border-color: rgb(157, 112, 0);
+ }
+
+.eC5,
+.fc-agenda .eC5 .fc-event-time,
+.eC5 a {
+ background-color: rgb(115, 115, 115);
+ border-color: rgb(81, 81, 81);
+}
+
+.eC6,
+.fc-agenda .eC6 .fc-event-time,
+.eC6 a {
+ background-color: rgb(173, 45, 45);
+ border-color: rgb(135, 17, 17);
+}
+
+.eC7,
+.fc-agenda .eC7 .fc-event-time,
+.eC7 a {
+ background-color: rgb(102, 140, 179);
+ border-color: rgb(51, 102, 153);
+}
+
+.eC8,
+.fc-agenda .eC8 .fc-event-time,
+.eC8 a {
+ background-color: rgb(150, 67, 165);
+ border-color: rgb(112, 35, 127);
+}
+
+.eC9,
+.fc-agenda .eC9 .fc-event-time,
+.eC9 a {
+ background-color: rgb(167, 184, 40);
+ border-color: rgb(129, 145, 11);
+}
+
+.eC10,
+.fc-agenda .eC10 .fc-event-time,
+.eC10 a {
+ background-color: rgb(212, 127, 30);
+ border-color: rgb(170, 90, 0);
+ }
+
+.eC11,
+.fc-agenda .eC11 .fc-event-time,
+.eC11 a {
+ background-color: rgb(65, 165, 135);
+ border-color: rgb(34, 127, 99);
+}
+
+.eC12,
+.fc-agenda .eC12 .fc-event-time,
+.eC12 a {
+ background-color: rgb(209, 188, 54);
+ border-color: rgb(165, 145, 20);
+}
+
+
+.eC13,
+.fc-agenda .eC13 .fc-event-time,
+.eC13 a {
+ background-color: rgb(181, 100, 20);
+ border-color: rgb(141, 69, 0);
+}
+
+.eC14,
+.fc-agenda .eC14 .fc-event-time,
+.eC14 a {
+ background-color: rgb(217, 102, 102);
+ border-color: rgb(204, 51, 51);
+}
+
+.eC15,
+.fc-agenda .eC15 .fc-event-time,
+.eC15 a {
+ background-color: rgb(230, 115, 153);
+ border-color: rgb(221, 68, 119);
+}
+
+.eC16,
+.fc-agenda .eC16 .fc-event-time,
+.eC16 a {
+ background-color: rgb(179, 115, 179);
+ border-color: rgb(153, 68, 153);
+}
+
+.eC17,
+.fc-agenda .eC17 .fc-event-time,
+.eC17 a {
+ background-color: rgb(140, 102, 217);
+ border-color: rgb(102, 51, 204);
+}
+
+.eC18,
+.fc-agenda .eC18 .fc-event-time,
+.eC18 a {
+ background-color: rgb(145, 77, 20);
+ border-color: rgb(116, 53, 0);
+}
+
+.eC19,
+.fc-agenda .eC19 .fc-event-time,
+.eC19 a {
+ background-color: rgb(102, 140, 217);
+ border-color: rgb(51, 102, 204);
+}
+
+.eC20,
+.fc-agenda .eC20 .fc-event-time,
+.eC20 a {
+ background-color: rgb(89, 191, 179);
+ border-color: rgb(34, 170, 153);
+}
+
+.eC21,
+.fc-agenda .eC21 .fc-event-time,
+.eC21 a {
+ background-color: rgb(101, 173, 137);
+ border-color: rgb(50, 146, 98);
+}
+
+.eC22,
+.fc-agenda .eC22 .fc-event-time,
+.eC22 a {
+ background-color: rgb(76, 176, 82);
+ border-color: rgb(16, 150, 24);
+}
+
+.eC23,
+.fc-agenda .eC23 .fc-event-time,
+.eC23 a {
+ background-color: rgb(140, 191, 64);
+ border-color: rgb(102, 170, 0);
+}
+
+.eC24,
+.fc-agenda .eC24 .fc-event-time,
+.eC24 a {
+ background-color: rgb(191, 191, 77);
+ border-color: rgb(170, 170, 17);
+}
+
+.eC25,
+.fc-agenda .eC25 .fc-event-time,
+.eC25 a {
+ background-color: rgb(224, 194, 64);
+ border-color: rgb(214, 174, 0);
+}
+
+.eC26,
+.fc-agenda .eC26 .fc-event-time,
+.eC26 a {
+ background-color: rgb(242, 166, 64);
+ border-color: rgb(238, 136, 0);
+}
+
+.eC27,
+.fc-agenda .eC27 .fc-event-time,
+.eC27 a {
+ background-color: rgb(230, 128, 77);
+ border-color: rgb(221, 85, 17);
+}
+
+.eC28,
+.fc-agenda .eC28 .fc-event-time,
+.eC28 a {
+ background-color: rgb(190, 148, 148);
+ border-color: rgb(168, 112, 112);
+}
+
+.eC29,
+.fc-agenda .eC29 .fc-event-time,
+.eC29 a {
+ background-color: rgb(169, 146, 169);
+ border-color: rgb(140, 109, 140);
+}
+
+.eC30,
+.fc-agenda .eC30 .fc-event-time,
+.eC30 a {
+ background-color: rgb(137, 151, 165);
+ border-color: rgb(98, 116, 135);
+}
+
+.eC31,
+.fc-agenda .eC31 .fc-event-time,
+.eC31 a {
+ background-color: rgb(148, 162, 190);
+ border-color: rgb(112, 131, 168);
+}
+
+.eC32,
+.fc-agenda .eC32 .fc-event-time,
+.eC32 a {
+ background-color: rgb(133, 170, 165);
+ border-color: rgb(92, 141, 135);
+}
+
+.eC33,
+.fc-agenda .eC33 .fc-event-time,
+.eC33 a {
+ background-color: rgb(167, 167, 125);
+ border-color: rgb(137, 137, 81);
+}
+
+.eC34,
+.fc-agenda .eC34 .fc-event-time,
+.eC34 a {
+ background-color: rgb(196, 168, 131);
+ border-color: rgb(176, 139, 89);
+}
+
+
+.eC35,
+.fc-agenda .eC35 .fc-event-time,
+.eC35 a {
+ background-color: rgb(126, 194, 37);
+ border-color: rgb(90, 154, 8);
+}

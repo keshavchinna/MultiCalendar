@@ -1,0 +1,261 @@
+<script type='text/javascript' src='jquery.js'></script>
+<script type='text/javascript' src='jquery-ui-custom.js'></script>
+<script type='text/javascript' src='fullcalendar.min.js'></script>
+<link rel='stylesheet' type='text/css' href='fullcalendar.css'/>
+
+<script>
+
+  function initCalendar(p_showMenu, p_divId) {
+    if (typeof p_showMenu == "undefined") {
+      p_showMenu = false;
+    }
+
+    mazMasterCalendarDiv = "calendar";
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
+    $("#" + mazMasterCalendarDiv).fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicWeek,basicDay'
+      },
+      editable: false
+    });
+
+
+    $.each(managedCalendarList, function () {
+      var checkBoxStatus = "";
+      if (!this.hideMe) {
+        checkBoxStatus = "checked";
+        $("#" + mazMasterCalendarDiv).fullCalendar('addEventSource', this.eventList);
+      }
+
+      $("#" + mazMasterCalendarDiv + "_menu").append("<br/>");
+
+      $("#" + mazMasterCalendarDiv + "_menu").append('<div class="fc-event  fc-event-hori  fc-corner-left fc-corner-right eC' + this.position + '"  style="min-height: 1px;  height:80px;"><a href="#" onclick="return changeVision(this,' + this.position + ');"><span class="fc-event-title"><input type="checkbox" ' + checkBoxStatus + ' ReadOnly id="checkEc' + this.position + '"/>' + this.title + '</span></a></div>');
+    });
+  }
+
+  function changeVision(anObj, position) {
+
+    //var a = $("input[id=checkEc"+position+"]").attr('checked', true);
+    //myLog("a="+a);
+    $("#" + mazMasterCalendarDiv).fullCalendar('removeEvents');
+
+    var statusCheckbox = $("input[id=checkEc" + position + "]").attr('checked');
+    //myLog("statusCheckbox="+statusCheckbox);
+    $("input[id=checkEc" + position + "]").attr('checked', !statusCheckbox);
+
+    $.each(managedCalendarList, function () {
+      //myLog("managedCalendarList["+this.position+"]="+this.title);
+      if (this.position == position) {
+        this.hideMe = statusCheckbox;
+        yiyi = this.eventList;
+        //myLog("this.hideMe="+this.position+"/"+statusCheckbox);
+        //$("#"+mazMasterCalendarDiv).fullCalendar('removeEventSource', this.eventList );
+      }
+
+      if (!this.hideMe) {
+        //myLog("addEventSource["+this.position+"]="+this.title);
+        $("#" + mazMasterCalendarDiv).fullCalendar('addEventSource', this.eventList);
+      } else {
+        //myLog("DO NOT addEventSource["+this.position+"]="+this.title);
+      }
+    });
+
+    return false;
+  }
+
+</script>
+
+<script type="text/javascript">
+
+  function initAll() {
+    var i = 0;
+    posCalendarLoaded = 0;
+    managedCalendarList = [];
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    var currentPosition = 1;
+    var eventList1 = [
+      {
+        title: 'All Day Event1',
+        start: new Date(y, m, 1),
+        className: 'eC' + currentPosition
+      },
+      {
+        title: 'Long Event1',
+        start: new Date(y, m, d - 5),
+        end: new Date(y, m, d - 2),
+        className: 'eC' + currentPosition
+      },
+      {
+        id: 999,
+        title: 'Repeating Event1',
+        start: new Date(y, m, d - 3, 16, 0),
+        allDay: false,
+        className: 'eC' + currentPosition
+      },
+      {
+        id: 999,
+        title: 'Repeating Event1',
+        start: new Date(y, m, d + 4, 16, 0),
+        allDay: false,
+        className: 'eC' + currentPosition
+      },
+      {
+        title: 'Birthday Party1',
+        start: new Date(y, m, d + 1, 19, 0),
+        end: new Date(y, m, d + 1, 22, 30),
+        allDay: false,
+        className: 'eC' + currentPosition
+      },
+      {
+        title: 'Click for Google1',
+        start: new Date(y, m, 28),
+        end: new Date(y, m, 29),
+        url: 'http://google.com/',
+        className: 'eC' + currentPosition
+      }
+    ];
+
+    aCalendar = [];
+    aCalendar.title = "";
+    aCalendar.hideMe = true;
+    aCalendar.position = currentPosition;
+    aCalendar.eventList = eventList1;
+    managedCalendarList.push(aCalendar);
+
+    currentPosition = currentPosition + 1;
+    var eventList2 = [
+      {
+        title: 'All Day Event2',
+        start: new Date(y, m, 3),
+        className: 'eC' + currentPosition
+      },
+      {
+        title: 'Long Event2',
+        start: new Date(y, m, d - 1),
+        end: new Date(y, m, d + 2),
+        className: 'eC' + currentPosition
+      },
+      {
+        id: 999,
+        title: 'Repeating Event2',
+        start: new Date(y, m, d - 3, 8, 0),
+        allDay: false,
+        className: 'eC' + currentPosition
+      },
+      {
+        id: 999,
+        title: 'Repeating Event2',
+        start: new Date(y, m, d + 4, 8, 0),
+        allDay: false,
+        className: 'eC' + currentPosition
+      },
+      {
+        title: 'Meeting2',
+        start: new Date(y, m, d, 10, 30),
+        allDay: false,
+        className: 'eC' + currentPosition
+      },
+      {
+        title: 'Lunch2',
+        start: new Date(y, m, d, 12, 0),
+        end: new Date(y, m, d, 14, 0),
+        allDay: false,
+        className: 'eC' + currentPosition
+      }
+    ];
+    aCalendar = [];
+    aCalendar.title = "Calendar" + currentPosition;
+    aCalendar.hideMe = false;
+    aCalendar.position = currentPosition;
+    aCalendar.eventList = eventList2;
+    managedCalendarList.push(aCalendar);
+
+
+    currentPosition = currentPosition + 1;
+    var eventList3 = [
+      {
+        title: 'All Day Event3',
+        start: new Date(y, m, 5),
+        className: 'eC' + currentPosition
+      },
+      {
+        title: 'Long Event3',
+        start: new Date(y, m, d + 3),
+        end: new Date(y, m, d + 5),
+        className: 'eC' + currentPosition
+      },
+      {
+        id: 999,
+        title: 'Repeating Event3',
+        start: new Date(y, m, d, 8, 0),
+        allDay: false,
+        className: 'eC' + currentPosition
+      },
+      {
+        id: 999,
+        title: 'Repeating Event3',
+        start: new Date(y, m, d + 7, 8, 0),
+        allDay: false,
+        className: 'eC' + currentPosition
+      },
+      {
+        title: 'Meeting3',
+        start: new Date(y, m, d + 10, 14, 30),
+        allDay: false,
+        className: 'eC' + currentPosition
+      },
+      {
+        title: 'Lunch3',
+        start: new Date(y, m, d + 9, 12, 0),
+        end: new Date(y, m, d + 9, 14, 0),
+        allDay: false,
+        className: 'eC' + currentPosition
+      }
+    ];
+
+    aCalendar = [];
+    aCalendar.title = "Calendar" + currentPosition;
+    aCalendar.hideMe = false;
+    aCalendar.position = currentPosition;
+    aCalendar.eventList = eventList3;
+    managedCalendarList.push(aCalendar);
+
+
+    initCalendar(true);
+  }
+
+  $(document).ready(function () {
+    initAll();
+  });
+
+
+</script>
+Sample of a calendar with multiple view<br>
+-point 1 : I must manage event class manualy, and I would prefer to use a default class by "calendar/eventList"<br>
+-point 2 : my javascript/html code is "poor" and I would prefer that to be integrated in the fullcalendar features<br>
+-point 3 : my choosen color are "poor" / beware I little customize fullcalendar.css to integrate a lot of .eC, so I can manage a lot of calendar
+<br>
+-point 4 : perhaps an option to show the "calendar_menu"/calendar_selector on rigth/left/up/down should be great<br>
+
+
+<table border="0">
+  <tr>
+    <td>
+      <div id='calendar' style='width: 900px;	margin: 0 auto;'></div>
+    </td>
+    <td>
+      <div id='calendar_menu' class="fc-content" style="position: relative; min-height: 1px; width: 150px;"></div>
+    </td>
+  </tr>
+</table>
